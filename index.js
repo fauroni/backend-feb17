@@ -77,17 +77,10 @@ async function main() {
 
     app.get('/customers/create', async(req,res)=>{
         let [companies] = await connection.execute('SELECT * from Companies');
-        console.log("companies: ", companies)
-        // let [companies] = await connection.execute('SELECT * from Companies');
-        res.render('customers/add', {
-            'companies': companies
-        })
-    })
-
-    app.get('/customers/create', async(req,res)=>{
-        let [companies] = await connection.execute('SELECT * from Companies');
-        res.render('customers/add', {
-            'companies': companies
+        let [employees] = await connection.execute('SELECT * from Employees');
+        res.render('customers/create', {
+            'companies': companies ,
+            'employees' : employees
         })
     })
     
